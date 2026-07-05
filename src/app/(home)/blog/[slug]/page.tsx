@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
+import { BlogAuthor } from '@/components/blog-author';
 import { BlogShareButton } from '@/components/blog-share-button';
 import { getMDXComponents } from '@/components/mdx';
 import { formatBlogDate } from '@/lib/blog';
@@ -20,10 +21,7 @@ export default async function Page(props: PageProps<'/blog/[slug]'>) {
   return (
     <article className="mx-auto flex w-full max-w-[800px] flex-col px-4 py-8">
       <div className="mb-8 flex flex-row gap-4 text-sm">
-        <div>
-          <p className="mb-1 text-fd-muted-foreground">Written by</p>
-          <p className="font-medium">{page.data.author}</p>
-        </div>
+        <BlogAuthor slug={page.data.author} />
         <div>
           <p className="mb-1 text-fd-muted-foreground">At</p>
           <p className="font-medium">{formatBlogDate(page.data.date)}</p>

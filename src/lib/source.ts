@@ -1,8 +1,9 @@
 import { blogPosts } from 'collections/server';
 import { toFumadocsSource } from 'fumadocs-mdx/runtime/server';
 import { loader } from 'fumadocs-core/source';
-import { blogContentRoute } from './shared';
+import { getAuthor } from './authors';
 import { formatBlogDate } from './blog';
+import { blogContentRoute } from './shared';
 
 export const blog = loader({
   baseUrl: '/blog',
@@ -25,7 +26,7 @@ export async function getLLMText(page: (typeof blog)['$inferPage']) {
 
   return `# ${page.data.title}
 URL: ${page.url}
-Author: ${page.data.author}
+Author: ${getAuthor(page.data.author).name}
 Date: ${date}
 
 ${page.data.description ?? ''}
