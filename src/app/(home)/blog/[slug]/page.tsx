@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
+import { BlogShareButton } from '@/components/blog-share-button';
 import { getMDXComponents } from '@/components/mdx';
 import { formatBlogDate } from '@/lib/blog';
 import { blog } from '@/lib/source';
 import { cn } from '@/lib/cn';
 import type { Metadata } from 'next';
-import { ShareButton } from './page.client';
+import { BlogShareButton } from '@/components/blog-share-button';
 
 export default async function Page(props: PageProps<'/blog/[slug]'>) {
   const { slug } = await props.params;
@@ -34,7 +35,7 @@ export default async function Page(props: PageProps<'/blog/[slug]'>) {
 
       <div className="prose min-w-0 flex-1">
         <div className="not-prose mb-8 flex flex-row gap-2">
-          <ShareButton url={page.url} />
+          <BlogShareButton url={page.url} />
           <Link
             href="/blog"
             className={cn(

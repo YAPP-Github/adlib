@@ -5,7 +5,7 @@ import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { cn } from '@/lib/cn';
 import { useCopyButton } from '@/lib/use-copy-button';
 
-export function ShareButton({ url }: { url: string }) {
+export function BlogShareButton({ url }: { url: string }) {
   const [isChecked, onCopy] = useCopyButton(() => {
     void navigator.clipboard.writeText(`${window.location.origin}${url}`);
   });
