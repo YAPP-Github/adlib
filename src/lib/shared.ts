@@ -1,7 +1,6 @@
 export const appName = 'adlib';
-export const docsRoute = '/docs';
-export const docsImageRoute = '/og/docs';
-export const docsContentRoute = '/llms.mdx/docs';
+export const productName = 'chaeso-zip';
+export const blogContentRoute = '/llms.mdx/blog';
 
 export const gitConfig = {
   user: 'YAPP-Github',
