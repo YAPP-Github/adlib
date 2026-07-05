@@ -2,6 +2,8 @@
 
 adlib 테크 블로그에 글을 올리는 방법입니다.
 
+다른 팀의 기술 블로그([CAR-FFEINE](https://car-ffeine.github.io/) 등)를 보며, 우리 팀도 기술 이야기를 모을 공간이 있으면 좋겠다고 생각해 이 블로그를 만들었습니다. (CAR-FFEINE은 Docusaurus 기반이고, adlib는 Fumadocs + GitHub Pages로 구성되어 스택은 다릅니다.)
+
 ## 빠른 시작
 
 1. [개발 환경](#0-개발-환경) 준비 (Node 24 + pnpm 11)

@@ -1,6 +1,7 @@
 # adlib
 
-chaeso-zip을 만드는 **adlib** 팀의 테크 블로그입니다.
+chaeso-zip을 만드는 **adlib** 팀의 테크 블로그입니다.  
+다른 팀의 기술 블로그를 보며 우리 팀도 비슷한 공간이 있으면 좋겠다고 생각해 만들었습니다. ([CAR-FFEINE](https://car-ffeine.github.io/) — Docusaurus / adlib — Fumadocs + GitHub Pages)
 
 - 사이트: https://yapp-github.github.io/adlib/
 - **글 작성 가이드: [BLOG.md](./BLOG.md)**
