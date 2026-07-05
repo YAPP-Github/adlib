@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Provider } from '@/components/provider';
 import './global.css';
@@ -5,6 +6,14 @@ import './global.css';
 const inter = Inter({
   subsets: ['latin'],
 });
+
+const siteUrl = process.env.SITE_URL;
+
+export const metadata: Metadata = siteUrl
+  ? {
+      metadataBase: new URL(siteUrl),
+    }
+  : {};
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (

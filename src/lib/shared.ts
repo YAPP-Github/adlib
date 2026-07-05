@@ -1,11 +1,12 @@
-export const appName = 'My App';
-export const docsRoute = '/docs';
-export const docsImageRoute = '/og/docs';
-export const docsContentRoute = '/llms.mdx/docs';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
-// fill this with your actual GitHub info, for example:
+export const appName = 'adlib';
+export const docsRoute = `${basePath}/docs`;
+export const docsImageRoute = `${basePath}/og/docs`;
+export const docsContentRoute = `${basePath}/llms.mdx/docs`;
+
 export const gitConfig = {
-  user: 'fuma-nama',
-  repo: 'fumadocs',
+  user: 'YAPP-Github',
+  repo: 'adlib',
   branch: 'main',
 };
