@@ -1,47 +1,47 @@
 # adlib
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+chaeso-zip을 만드는 **adlib** 팀의 테크 블로그입니다.
 
-It is a Next.js app with [Static Export](https://nextjs.org/docs/app/guides/static-exports) configured.
+- 사이트: https://yapp-github.github.io/adlib/
+- **글 작성 가이드: [BLOG.md](./BLOG.md)**
 
-Run development server:
+## 요구 사항
+
+- **Node.js 24**
+- **pnpm 11**
+
+`mise.toml` / `.nvmrc`에 버전이 고정되어 있습니다. CI도 동일한 버전을 사용합니다.
+
+## 개발
+
+### mise 사용 (권장)
+
+팀에서 `mise.toml`로 Node·pnpm 버전을 맞춥니다. 설치·사용법은 [BLOG.md — 개발 환경](./BLOG.md#0-개발-환경)을 참고하세요.
 
 ```bash
-npm run dev
-# or
-pnpm dev
-# or
-yarn dev
+mise install
+mise exec -- pnpm install
+mise exec -- pnpm dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+### mise 없이
 
-## Explore
+Node 24와 pnpm 11이 PATH에 있으면 바로 실행할 수 있습니다.
 
-In the project, you can see:
+```bash
+pnpm install
+pnpm dev
+```
 
-- `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
-- `lib/layout.shared.tsx`: Shared options for layouts, optional but preferred to keep.
+http://localhost:3000
 
-| Route                     | Description                                            |
-| ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
-| `app/api/search/route.ts` | The Route Handler for search.                          |
+## 구조
 
-### Fumadocs MDX
+| 경로 | 설명 |
+|------|------|
+| `content/blog/` | 블로그 MDX 글 |
+| `src/lib/authors.ts` | 저자 프로필 (GitHub 링크 등) |
+| `src/app/(home)/blog/` | 블로그 목록·상세 페이지 |
+| `source.config.ts` | MDX 컬렉션·frontmatter 스키마 |
 
-A `source.config.ts` config file has been included, you can customise different options like frontmatter schema.
-
-Read the [Introduction](https://fumadocs.dev/docs/mdx) for further details.
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.dev) - learn about Fumadocs
+Static export + GitHub Pages로 배포됩니다. (`next.config.mjs`, `.github/workflows/deploy.yml`)
