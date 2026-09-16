@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 
 export function DemoVideo({ src, poster, title, id }: {
   src: string;
@@ -25,7 +27,7 @@ export function DemoVideo({ src, poster, title, id }: {
   }
 
   return (
-    <div className="relative bg-black">
+    <div className="relative overflow-hidden rounded-lg bg-black">
       <video
         ref={videoRef}
         data-demo-video
@@ -55,7 +57,10 @@ export function DemoVideo({ src, poster, title, id }: {
           type="button"
           aria-label={`${title} 재생`}
           onClick={play}
-          className="absolute inset-0 flex items-center justify-center bg-black/5 transition-colors hover:bg-black/15 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
+          className={buttonVariants({
+            variant: 'ghost',
+            className: 'absolute inset-0 w-full rounded-none bg-black/5 hover:bg-black/15 focus-visible:ring-inset focus-visible:ring-white',
+          })}
         >
           <span className="flex size-14 items-center justify-center rounded-full bg-black/75 text-white shadow-lg">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -65,9 +70,9 @@ export function DemoVideo({ src, poster, title, id }: {
         </button>
       )}
       {failed && (
-        <p role="alert" className="absolute inset-x-0 bottom-0 bg-black/85 p-3 text-center text-sm text-white">
+        <Callout type="error" role="alert" className="my-0 rounded-none">
           영상을 불러오지 못했습니다. 재생 버튼을 눌러 다시 시도해 주세요.
-        </p>
+        </Callout>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Card, Cards } from 'fumadocs-ui/components/card';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { DemoVideo } from '@/components/demo-video';
 import { demoSections } from '@/lib/demos';
@@ -25,7 +26,7 @@ export default function DemoPage() {
         </p>
         <a
           href="https://chaeso-zip.com/"
-          className={buttonVariants({ className: 'mt-6 px-4' })}
+          className={buttonVariants({ variant: 'primary', className: 'mt-6 px-4' })}
         >
           채소ZIP 사용해 보기
         </a>
@@ -36,7 +37,7 @@ export default function DemoPage() {
           <a
             key={section.id}
             href={`#${section.id}`}
-            className="rounded-lg px-3 py-2 text-sm font-medium text-fd-muted-foreground transition-colors hover:bg-fd-muted hover:text-fd-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fd-ring"
+            className={buttonVariants({ variant: 'ghost', className: 'px-3' })}
           >
             {index + 1}. {section.label}
           </a>
@@ -56,29 +57,27 @@ export default function DemoPage() {
               {section.title}
             </h2>
             <p className="mt-3 leading-relaxed text-fd-muted-foreground">{section.description}</p>
-            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            <Cards className="mt-6 gap-6">
               {section.videos.map((video) => (
-                <article
+                <Card
                   key={video.id}
                   id={video.id}
+                  title={<span id={`${video.id}-title`}>{video.title}</span>}
+                  description={<span id={`${video.id}-description`}>{video.description}</span>}
                   aria-labelledby={`${video.id}-title`}
-                  className="min-w-0 scroll-mt-24 overflow-hidden rounded-xl border border-fd-border bg-fd-card"
+                  className="min-w-0 scroll-mt-24"
                 >
-                  <DemoVideo
-                    id={video.id}
-                    title={video.title}
-                    src={`${mediaPath}/${video.id}.mp4`}
-                    poster={`${mediaPath}/${video.id}-poster.png`}
-                  />
-                  <div className="p-5">
-                    <h3 id={`${video.id}-title`} className="text-lg font-semibold">{video.title}</h3>
-                    <p id={`${video.id}-description`} className="mt-2 text-sm leading-relaxed text-fd-muted-foreground">
-                      {video.description}
-                    </p>
+                  <div className="pt-4">
+                    <DemoVideo
+                      id={video.id}
+                      title={video.title}
+                      src={`${mediaPath}/${video.id}.mp4`}
+                      poster={`${mediaPath}/${video.id}-poster.png`}
+                    />
                   </div>
-                </article>
+                </Card>
               ))}
-            </div>
+            </Cards>
           </section>
         ))}
       </div>
