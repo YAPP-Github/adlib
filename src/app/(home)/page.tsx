@@ -41,6 +41,11 @@ export default function HomePage() {
           title='Blog'
           description='팀이 쓴 글을 모아 둔 아카이브입니다. 검색(Cmd+K)으로도 찾을 수 있습니다.'
         />
+        <Card
+          href='/demo'
+          title='Demo'
+          description='채널 추천, 비교, 예산 시뮬레이션까지 채소ZIP의 주요 기능을 영상으로 만나보세요.'
+        />
       </Cards>
     </main>
   );
