@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import type { TOCItemType } from 'fumadocs-core/toc';
 import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Heading } from 'fumadocs-ui/components/heading';
+import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { DemoVideo } from '@/components/demo-video';
 import { demoSections } from '@/lib/demos';
@@ -11,6 +14,11 @@ export const metadata: Metadata = {
 
 // Native media URLs need the same prefix as the GitHub Pages deployment.
 const mediaPath = `${process.env.BASE_PATH ?? ''}/demo`;
+const tableOfContents: TOCItemType[] = demoSections.map((section, index) => ({
+  title: `${index + 1}. ${section.label}`,
+  url: `#${section.id}`,
+  depth: 2,
+}));
 
 export default function DemoPage() {
   return (
@@ -32,16 +40,10 @@ export default function DemoPage() {
         </a>
       </header>
 
-      <nav aria-label="데모 기능 바로가기" className="my-10 flex flex-wrap gap-2 border-y border-fd-border py-4">
-        {demoSections.map((section, index) => (
-          <a
-            key={section.id}
-            href={`#${section.id}`}
-            className={buttonVariants({ variant: 'ghost', className: 'px-3' })}
-          >
-            {index + 1}. {section.label}
-          </a>
-        ))}
+      <nav aria-label="데모 기능 바로가기" className="my-10">
+        <InlineTOC items={tableOfContents} defaultOpen>
+          데모 기능 바로가기
+        </InlineTOC>
       </nav>
 
       <div className="space-y-16">
@@ -53,9 +55,9 @@ export default function DemoPage() {
             className="scroll-mt-24"
           >
             <p className="text-sm font-medium text-fd-muted-foreground">0{index + 1}</p>
-            <h2 id={`${section.id}-title`} className="mt-2 text-2xl font-semibold tracking-tight">
+            <Heading as="h2" id={`${section.id}-title`} className="mt-2 text-2xl font-semibold tracking-tight">
               {section.title}
-            </h2>
+            </Heading>
             <p className="mt-3 leading-relaxed text-fd-muted-foreground">{section.description}</p>
             <Cards className="mt-6 gap-6">
               {section.videos.map((video) => (
